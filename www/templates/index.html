@@ -1,0 +1,20 @@
+<view title="'AngularJsBrasil'">
+
+    <div class="bar bar-subheader item-input-inset">
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios7-search placeholder-icon"></i>
+            <input id="searchKey" type="search" placeholder="Pesquisar" ng-model="searchKey" autocorrect="off" >
+        </label>
+    </div>
+
+    <content has-header="true" has-subheader="true">
+        <list>
+            <item ng-repeat="item in lista | filter: searchKey" type="item-text-wrap" href="#/details/{{item.id}}">
+                <h3>{{item.name}}</h3>
+                <p>{{item.description}}</p>
+            </item>
+            </item>
+        </list>
+    </content>
+
+</view>

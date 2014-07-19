@@ -1,0 +1,11 @@
+<view title="item.name">
+  <content has-header="true" padding="true">
+        <list>
+            <item ng-repeat="item in lista | filter: searchKey" type="item-text-wrap" href="#/details/{{item.id}}">
+                <h3>{{item.name}}</h3>
+                <p>{{item.description}}</p>
+            </item>
+            </item>
+        </list>
+  </content>
+</view>

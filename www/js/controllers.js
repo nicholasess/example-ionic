@@ -1,38 +1,28 @@
 angular.module('directory.controllers', [])
-
-    .controller('EmployeeIndexCtrl', function ($scope, EmployeeService) {
-
-        $scope.searchKey = "";
+    .controller('IndexCtrl', function ($scope, Service) {
 
         $scope.clearSearch = function () {
             $scope.searchKey = "";
-            findAllEmployees();
+            findAlllistas();
         }
 
         $scope.search = function () {
-            EmployeeService.findByName($scope.searchKey).then(function (employees) {
-                $scope.employees = employees;
+            Service.findByName($scope.searchKey).then(function (listas) {
+                $scope.lista = listas;
             });
         }
 
-        var findAllEmployees = function() {
-            EmployeeService.findAll().then(function (employees) {
-                $scope.employees = employees;
+        $scope.findAll = function() {
+            Service.findAll().then(function (lista) {
+                $scope.lista = lista;
             });
         }
 
-        findAllEmployees();
-
+        $scope.findAll();
     })
 
-    .controller('EmployeeDetailCtrl', function ($scope, $stateParams, EmployeeService) {
-        EmployeeService.findById($stateParams.employeeId).then(function(employee) {
-            $scope.employee = employee;
+    .controller('DetailCtrl', function ($scope, $stateParams, Service) {
+        Service.findById($stateParams.id).then(function(item) {
+            $scope.item = item;
         });
     })
-
-    .controller('EmployeeReportsCtrl', function ($scope, $stateParams, EmployeeService) {
-        EmployeeService.findByManager($stateParams.employeeId).then(function(employees) {
-            $scope.employees = employees;
-        });
-    });
